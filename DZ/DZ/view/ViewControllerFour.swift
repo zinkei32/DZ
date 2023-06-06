@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewControllerFour: UIViewController {
+final class ViewControllerAddCar: UIViewController, UIPickerViewDelegate  {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,7 +15,7 @@ class ViewControllerFour: UIViewController {
         createToolbar()
     }
     
-    lazy var brendLabel: UILabel = {
+    private lazy var brendLabel: UILabel = {
        var brendLabel = UILabel()
         brendLabel.frame = CGRect(x: 30, y: 30, width: 150, height: 30)
         brendLabel.font = brendLabel.font.withSize(20)
@@ -24,7 +24,7 @@ class ViewControllerFour: UIViewController {
         return brendLabel
     }()
     
-    lazy var brendTextField: UITextField = {
+    private lazy var brendTextField: UITextField = {
        var brendTextField = UITextField()
         brendTextField.frame = CGRect(x: 30, y: 70, width: 150, height: 30)
         brendTextField.borderStyle = UITextField.BorderStyle.roundedRect
@@ -33,7 +33,7 @@ class ViewControllerFour: UIViewController {
         return brendTextField
     }()
     
-    lazy var modelLabel: UILabel = {
+    private lazy var modelLabel: UILabel = {
        var modelLabel = UILabel()
         modelLabel.frame = CGRect(x: 30, y: 110, width: 150, height: 30)
         modelLabel.font = modelLabel.font.withSize(20)
@@ -42,7 +42,7 @@ class ViewControllerFour: UIViewController {
         return modelLabel
     }()
     
-     lazy var modelTextField: UITextField = {
+    private lazy var modelTextField: UITextField = {
        var modelTextField = UITextField()
         modelTextField.frame = CGRect(x: 30, y: 150, width: 200, height: 30)
         modelTextField.borderStyle = UITextField.BorderStyle.roundedRect
@@ -50,7 +50,7 @@ class ViewControllerFour: UIViewController {
         return modelTextField
     }()
     
-    lazy var colorLabel: UILabel = {
+    private lazy var colorLabel: UILabel = {
        var colorLabel = UILabel()
         colorLabel.frame = CGRect(x: 30, y: 190, width: 100, height: 30)
         colorLabel.font = colorLabel.font.withSize(20)
@@ -59,7 +59,7 @@ class ViewControllerFour: UIViewController {
         return colorLabel
     }()
     
-     lazy var colorTextField: UITextField = {
+    private lazy var colorTextField: UITextField = {
        var colorTextField = UITextField()
         colorTextField.frame = CGRect(x: 30, y: 230, width: 200, height: 30)
         colorTextField.borderStyle = UITextField.BorderStyle.roundedRect
@@ -68,7 +68,7 @@ class ViewControllerFour: UIViewController {
         return colorTextField
     }()
     
-    lazy var yearLabel: UILabel = {
+    private lazy var yearLabel: UILabel = {
        var yearLabel = UILabel()
         yearLabel.frame = CGRect(x: 30, y: 270, width: 200, height: 30)
         yearLabel.font = yearLabel.font.withSize(20)
@@ -77,7 +77,7 @@ class ViewControllerFour: UIViewController {
         return yearLabel
     }()
     
-     lazy var yearTextField: UITextField = {
+    private lazy var yearTextField: UITextField = {
        var yearTextField = UITextField()
         yearTextField.frame = CGRect(x: 30, y: 310, width: 200, height: 30)
         yearTextField.borderStyle = UITextField.BorderStyle.roundedRect
@@ -87,7 +87,7 @@ class ViewControllerFour: UIViewController {
         return yearTextField
     }()
     
-    lazy var gbddLabel: UILabel = {
+    private lazy var gbddLabel: UILabel = {
        var gbddLabel = UILabel()
         gbddLabel.frame = CGRect(x: 30, y: 350, width: 240, height: 30)
         gbddLabel.font = yearLabel.font.withSize(20)
@@ -96,14 +96,14 @@ class ViewControllerFour: UIViewController {
         return gbddLabel
     }()
     
-    lazy var gbddSwith: UISwitch = {
+    private lazy var gbddSwith: UISwitch = {
       var gbddSwith = UISwitch()
         gbddSwith.frame = CGRect(x: 275, y: 350, width: 60, height: 30)
         gbddSwith.addTarget(self, action: #selector(switchIsOn(target:)), for: .valueChanged)
        return gbddSwith
    }()
     
-    lazy var discriptionLabel: UILabel = {
+    private lazy var discriptionLabel: UILabel = {
        var discriptionLabel = UILabel()
         discriptionLabel.frame = CGRect(x: 30, y: 400, width: 150, height: 30)
         discriptionLabel.font = discriptionLabel.font.withSize(20)
@@ -115,7 +115,7 @@ class ViewControllerFour: UIViewController {
     
     
     
-     lazy var discriptionTextField: UITextField = {
+    private lazy var discriptionTextField: UITextField = {
        var discriptionTextField = UITextField()
         discriptionTextField.frame = CGRect(x: 10, y: 430, width: 280, height: 200)
         discriptionTextField.font = UIFont(name: "HelveticaNeue", size: 12)
@@ -164,12 +164,12 @@ class ViewControllerFour: UIViewController {
     
    
     @objc func addButton(_ sender: UIButton) {
-        let contact = UIStoryboard(name: "Main", bundle: nil)
-        guard let nextView = contact.instantiateViewController(identifier: "viewTwo") as? ViewControllerTwo else { return }
         
-        nextView.cars.append(Car(brend: self.brendTextField.text ?? "", model: self.modelTextField.text ?? "", year: self.yearTextField.text ?? "", color: self.colorTextField.text ?? "", photo: self.brendLabel.text ?? "", price: self.brendLabel.text ?? "", photos: [""], description: self.discriptionTextField.text ?? ""))
-       // nextView.modalPresentationStyle = .fullScreen
-        self.show(nextView, sender: nil)
+        let contact = UIStoryboard(name: "Main", bundle: nil)
+        guard let nextView = contact.instantiateViewController(identifier: "viewTwo") as? ViewControllerDescriptionCar else { return }
+        
+        Car.cars.append(Car(brend: self.brendTextField.text ?? "", model: self.modelTextField.text ?? "", year: self.yearTextField.text ?? "", color: self.colorTextField.text ?? "", photo: self.brendLabel.text ?? "", price: self.brendLabel.text ?? "", photos: [""], description: self.discriptionTextField.text ?? ""))
+            self.show(nextView, sender: nil)
         
     }
     
@@ -203,7 +203,7 @@ class ViewControllerFour: UIViewController {
     }
 }
 
-extension ViewControllerFour: UIPickerViewDataSource, UIPickerViewDelegate {
+extension ViewControllerAddCar: UIPickerViewDataSource, UIPickerViewDelegate {
     func numberOfComponents(in pickerView: UIPickerView) -> Int { 1 }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
@@ -228,9 +228,9 @@ extension ViewControllerFour: UIPickerViewDataSource, UIPickerViewDelegate {
     }
 }
 
-extension ViewControllerFour: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension ViewControllerAddCar: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
   internal  func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+    if (info[UIImagePickerController.InfoKey.originalImage] as? UIImage) != nil {
             //photo.image = image
         }
         dismiss(animated: true, completion: nil)

@@ -7,11 +7,11 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewControllerStart: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureSubviews()
+        configureViews()
     }
     
     private lazy var showButton: UIButton = {
@@ -20,7 +20,7 @@ class ViewController: UIViewController {
         showButton.frame = CGRect(x: 180, y: 531, width: 28, height: 28)
         showButton.setImage(UIImage(named: "eyeshow.png"), for: .normal)
         showButton.tintColor = UIColor.systemGray
-        showButton.addTarget(self, action: #selector(showPasswordFunc), for: .touchUpInside)
+        showButton.addTarget(self, action: #selector(showPasswordAction), for: .touchUpInside)
         return showButton
     }()
     
@@ -32,12 +32,12 @@ class ViewController: UIViewController {
         signInButton.tintColor = UIColor.white
         signInButton.backgroundColor = UIColor.red
         signInButton.layer.cornerRadius = 7
-        signInButton.addTarget(self, action: #selector(signinButton), for: .touchUpInside)
+        signInButton.addTarget(self, action: #selector(signinButtonAction), for: .touchUpInside)
       
         return signInButton
     }()
     
-    private lazy var carSaleImage: UIImageView = {
+    private lazy var carSaleImageView: UIImageView = {
         var carSaleImage = UIImageView()
         carSaleImage.frame = CGRect(x: 0, y: 80, width: 200, height: 200)
         carSaleImage.center.x = view.center.x
@@ -45,7 +45,7 @@ class ViewController: UIViewController {
         return carSaleImage
     }()
     
-    private lazy var textSale: UILabel = {
+    private lazy var textSaleLabel: UILabel = {
         var textSale = UILabel()
         textSale.frame = CGRect(x: 0, y: 300, width: 250, height: 50)
         textSale.center.x = view.center.x
@@ -92,38 +92,38 @@ class ViewController: UIViewController {
     }()
     
     // MARK: добавление во вьюдидлок
-    private func configureSubviews() {
+    private func configureViews() {
         view.addSubview(passwordLabel)
         view.addSubview(emailLabel)
         view.addSubview(emailTextField)
         view.addSubview(passwordTextField)
-        view.addSubview(carSaleImage)
-        view.addSubview(textSale)
+        view.addSubview(carSaleImageView)
+        view.addSubview(textSaleLabel)
         view.addSubview(signInButton)
         view.addSubview(showButton)
 
     }
     
     //MARK: Функции
-    @IBAction func signinButton(_ sender: UIButton) {
+    @objc func signinButtonAction(_ sender: UIButton) {
         let name = emailTextField.text
         let password = passwordTextField.text
         
         if name != "Serg" || password != "0000"  {
             let alert = UIAlertController(title: "Че-то не так", message: "Нормальный логин и пароль введи", preferredStyle: .alert)
-            let alertOK = UIAlertAction(title: "Понял", style: .default)
-            alert.addAction(alertOK)
+            let errorAlertAction = UIAlertAction(title: "Понял", style: .default)
+            alert.addAction(errorAlertAction)
             self.present(alert, animated: true, completion: nil)
         } else {
             let story: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let newStory = story.instantiateViewController(withIdentifier: "viewTwo") as! ViewControllerTwo
+            let newStory = story.instantiateViewController(withIdentifier: "viewTwo") as! ViewControllerListCar
             
             self.present(newStory, animated: true, completion: nil)
         }
     }
     
     
-    @IBAction func showPasswordFunc(_ sender: UIButton) {
+    @objc func showPasswordAction(_ sender: UIButton) {
         if passwordTextField.isSecureTextEntry {
             passwordTextField.isSecureTextEntry = false
         } else {

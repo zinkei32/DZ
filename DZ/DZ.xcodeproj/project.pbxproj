@@ -27,6 +27,7 @@
 		79C22D752A2E06FB009B94D7 /* rav5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 79C22D6F2A2E06FB009B94D7 /* rav5.jpg */; };
 		79C22D762A2E06FB009B94D7 /* rav6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 79C22D702A2E06FB009B94D7 /* rav6.jpg */; };
 		79C22D772A2E06FB009B94D7 /* rav4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 79C22D712A2E06FB009B94D7 /* rav4.jpg */; };
+		79C22D7A2A2E1EEF009B94D7 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79C22D792A2E1EEF009B94D7 /* Model.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		79C22D6F2A2E06FB009B94D7 /* rav5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = rav5.jpg; sourceTree = "<group>"; };
 		79C22D702A2E06FB009B94D7 /* rav6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = rav6.jpg; sourceTree = "<group>"; };
 		79C22D712A2E06FB009B94D7 /* rav4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = rav4.jpg; sourceTree = "<group>"; };
+		79C22D792A2E1EEF009B94D7 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		79B4665B2A2F35E900E6C0D2 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				79C22D482A2E03C7009B94D7 /* ViewController.swift */,
+				79C22D622A2E05C4009B94D7 /* ViewControllerTwo.swift */,
+				79C22D642A2E05CE009B94D7 /* ViewControllerTree.swift */,
+				79C22D652A2E05CE009B94D7 /* ViewControllerFour.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
 		79C22D382A2E03C7009B94D7 = {
 			isa = PBXGroup;
 			children = (
@@ -85,17 +98,10 @@
 			isa = PBXGroup;
 			children = (
 				79C22D782A2E0702009B94D7 /* New Group */,
-				79C22D5A2A2E05B5009B94D7 /* Alphard.jpeg */,
-				79C22D5C2A2E05B5009B94D7 /* car sale.jpeg */,
-				79C22D582A2E05B5009B94D7 /* eyeshow.png */,
-				79C22D5B2A2E05B5009B94D7 /* ravBlue.jpg */,
-				79C22D592A2E05B5009B94D7 /* ravGold.jpg */,
 				79C22D442A2E03C7009B94D7 /* AppDelegate.swift */,
-				79C22D622A2E05C4009B94D7 /* ViewControllerTwo.swift */,
-				79C22D652A2E05CE009B94D7 /* ViewControllerFour.swift */,
-				79C22D642A2E05CE009B94D7 /* ViewControllerTree.swift */,
+				79B4665B2A2F35E900E6C0D2 /* view */,
+				79C22D792A2E1EEF009B94D7 /* Model.swift */,
 				79C22D462A2E03C7009B94D7 /* SceneDelegate.swift */,
-				79C22D482A2E03C7009B94D7 /* ViewController.swift */,
 				79C22D4A2A2E03C7009B94D7 /* Main.storyboard */,
 				79C22D4D2A2E03CA009B94D7 /* Assets.xcassets */,
 				79C22D4F2A2E03CA009B94D7 /* LaunchScreen.storyboard */,
@@ -113,6 +119,11 @@
 				79C22D712A2E06FB009B94D7 /* rav4.jpg */,
 				79C22D6F2A2E06FB009B94D7 /* rav5.jpg */,
 				79C22D702A2E06FB009B94D7 /* rav6.jpg */,
+				79C22D5A2A2E05B5009B94D7 /* Alphard.jpeg */,
+				79C22D5C2A2E05B5009B94D7 /* car sale.jpeg */,
+				79C22D582A2E05B5009B94D7 /* eyeshow.png */,
+				79C22D5B2A2E05B5009B94D7 /* ravBlue.jpg */,
+				79C22D592A2E05B5009B94D7 /* ravGold.jpg */,
 			);
 			path = "New Group";
 			sourceTree = "<group>";
@@ -198,6 +209,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79C22D7A2A2E1EEF009B94D7 /* Model.swift in Sources */,
 				79C22D662A2E05CE009B94D7 /* ViewControllerTree.swift in Sources */,
 				79C22D492A2E03C7009B94D7 /* ViewController.swift in Sources */,
 				79C22D672A2E05CE009B94D7 /* ViewControllerFour.swift in Sources */,

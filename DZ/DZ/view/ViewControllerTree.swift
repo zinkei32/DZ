@@ -7,13 +7,22 @@
 
 import UIKit
 
-class ViewControllerTree: UIViewController {
+class ViewControllerDescriptionCar: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureSubviews()
     }
     
+    var car: Car? {
+            didSet {
+                //guard let car else { return }
+                brendLabel.text = car?.brend
+                modelLabel.text = car?.model
+                priceLabel.text = car?.price
+                descriptionText.text = car?.description
+            }
+        }
     
 //MARK: лейблы и кнопки
     
@@ -26,7 +35,7 @@ class ViewControllerTree: UIViewController {
         return shareButton
     }()
     
-    lazy var brendLabel: UILabel = {
+   private lazy var brendLabel: UILabel = {
        var brendLabel = UILabel()
         brendLabel.frame = CGRect(x: 30, y: 30, width: 150, height: 50)
         brendLabel.font = brendLabel.font.withSize(24)
@@ -58,7 +67,7 @@ class ViewControllerTree: UIViewController {
         descriptionLabel.frame = CGRect(x: 30, y: 420, width: 150, height: 50)
         descriptionLabel.font = descriptionLabel.font.withSize(20)
         descriptionLabel.textColor = .black
-        descriptionLabel.text = "Описание:"       //как то надо его поправить
+        descriptionLabel.text = "Описание:"
         return descriptionLabel
     }()
     
@@ -87,7 +96,7 @@ class ViewControllerTree: UIViewController {
         var imagesCar = UIImageView()
         imagesCar.frame = CGRect(x: 0, y: 80, width: 320, height: 264)
         imagesCar.center.x = view.center.x
-        //imagesCar.image = UIImage(named: firstScreenq.cars[target.tag].photos[0])
+       // imagesCar.image = UIImage(named: firstScreenq.cars[target.tag].photos[0])
         return imagesCar
 }()
     
@@ -102,7 +111,7 @@ class ViewControllerTree: UIViewController {
         @objc func selectValue(target: UISegmentedControl) {
     
            let play = UIStoryboard(name: "Main", bundle: nil)
-           guard let firstScreen = play.instantiateViewController(identifier: "viewTwo") as? ViewControllerTwo else { return }
+           guard let firstScreen = play.instantiateViewController(identifier: "viewTwo") as? ViewControllerListCar else { return }
    
     if target == self.segmentControlImage {
         let segmentIndex = target.selectedSegmentIndex
