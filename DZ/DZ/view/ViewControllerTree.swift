@@ -16,11 +16,11 @@ class ViewControllerDescriptionCar: UIViewController {
     
     var car: Car? {
             didSet {
-                //guard let car else { return }
-                brendLabel.text = car?.brend
-                modelLabel.text = car?.model
-                priceLabel.text = car?.price
-                descriptionText.text = car?.description
+                guard let car = car else { return }
+                brendLabel.text = car.brend
+                modelLabel.text = car.model
+                priceLabel.text = car.price
+                descriptionText.text = car.description
             }
         }
     
@@ -44,7 +44,7 @@ class ViewControllerDescriptionCar: UIViewController {
         return brendLabel
     }()
     
-    lazy var modelLabel: UILabel = {
+    private lazy var modelLabel: UILabel = {
        var modelLabel = UILabel()
         modelLabel.frame = CGRect(x: 190, y: 30, width: 150, height: 50)
         modelLabel.font = modelLabel.font.withSize(24)
@@ -53,16 +53,16 @@ class ViewControllerDescriptionCar: UIViewController {
         return modelLabel
     }()
     
-    lazy var priceLabel: UILabel = {
+    private lazy var priceLabel: UILabel = {
        var priceLabel = UILabel()
-        priceLabel.frame = CGRect(x: 30, y: 420, width: 150, height: 50)
+        priceLabel.frame = CGRect(x: 30, y: 390, width: 150, height: 50)
         priceLabel.font = priceLabel.font.withSize(18)
         priceLabel.textColor = .black
         priceLabel.text = ""
         return priceLabel
     }()
     
-    lazy var descriptionLabel: UILabel = {
+    private lazy var descriptionLabel: UILabel = {
        var descriptionLabel = UILabel()
         descriptionLabel.frame = CGRect(x: 30, y: 420, width: 150, height: 50)
         descriptionLabel.font = descriptionLabel.font.withSize(20)
@@ -71,7 +71,7 @@ class ViewControllerDescriptionCar: UIViewController {
         return descriptionLabel
     }()
     
-    lazy var descriptionText: UILabel = {
+    private lazy var descriptionText: UILabel = {
        var descriptionText = UILabel()
         descriptionText.frame = CGRect(x: 30, y: 480, width: 300, height: 300)
         descriptionText.font = descriptionText.font.withSize(14)
@@ -92,11 +92,11 @@ class ViewControllerDescriptionCar: UIViewController {
          return segmentControlImage
     }()
     
-    lazy var imagesCar: UIImageView = { // как сюда подтянуть изображения из viewTwo что оно открывалось сразу при запуске
+    lazy var imagesCar: UIImageView = {
         var imagesCar = UIImageView()
         imagesCar.frame = CGRect(x: 0, y: 80, width: 320, height: 264)
         imagesCar.center.x = view.center.x
-       // imagesCar.image = UIImage(named: firstScreenq.cars[target.tag].photos[0])
+    
         return imagesCar
 }()
     

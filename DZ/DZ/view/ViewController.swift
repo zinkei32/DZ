@@ -11,7 +11,10 @@ class ViewControllerStart: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "FirstVC"
         configureViews()
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
     }
     
     private lazy var showButton: UIButton = {
@@ -115,11 +118,21 @@ class ViewControllerStart: UIViewController {
             alert.addAction(errorAlertAction)
             self.present(alert, animated: true, completion: nil)
         } else {
-            let story: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let newStory = story.instantiateViewController(withIdentifier: "viewTwo") as! ViewControllerListCar
-            
-            self.present(newStory, animated: true, completion: nil)
+            let secondVC = ViewControllerListCar()
+            self.navigationController?.pushViewController(secondVC, animated: true)
         }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first as? UITouch {
+            view.endEditing(true)
+        }
+        super.touchesBegan(touches, with: event)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     

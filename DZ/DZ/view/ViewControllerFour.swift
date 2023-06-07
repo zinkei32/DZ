@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class ViewControllerAddCar: UIViewController, UIPickerViewDelegate  {
+ class ViewControllerAddCar: UIViewController  {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,100 +15,110 @@ final class ViewControllerAddCar: UIViewController, UIPickerViewDelegate  {
         createToolbar()
     }
     
+  var  hightFromY = 90
+    
     private lazy var brendLabel: UILabel = {
        var brendLabel = UILabel()
-        brendLabel.frame = CGRect(x: 30, y: 30, width: 150, height: 30)
+        brendLabel.frame = CGRect(x: 30, y: hightFromY, width: 150, height: 30)
         brendLabel.font = brendLabel.font.withSize(20)
         brendLabel.textColor = .systemGray
         brendLabel.text = "Марка авто"
+        hightFromY += 40
         return brendLabel
     }()
     
     private lazy var brendTextField: UITextField = {
        var brendTextField = UITextField()
-        brendTextField.frame = CGRect(x: 30, y: 70, width: 150, height: 30)
+        brendTextField.frame = CGRect(x: 30, y: hightFromY, width: 150, height: 30)
         brendTextField.borderStyle = UITextField.BorderStyle.roundedRect
         brendTextField.tintColor = UIColor.systemGray
-
+        hightFromY += 40
         return brendTextField
     }()
     
     private lazy var modelLabel: UILabel = {
        var modelLabel = UILabel()
-        modelLabel.frame = CGRect(x: 30, y: 110, width: 150, height: 30)
+        modelLabel.frame = CGRect(x: 30, y: hightFromY, width: 150, height: 30)
         modelLabel.font = modelLabel.font.withSize(20)
         modelLabel.textColor = .systemGray
         modelLabel.text = "Модель авто:"
+        hightFromY += 40
         return modelLabel
     }()
     
     private lazy var modelTextField: UITextField = {
        var modelTextField = UITextField()
-        modelTextField.frame = CGRect(x: 30, y: 150, width: 200, height: 30)
+        modelTextField.frame = CGRect(x: 30, y: hightFromY, width: 200, height: 30)
         modelTextField.borderStyle = UITextField.BorderStyle.roundedRect
         modelTextField.tintColor = UIColor.systemGray
+        hightFromY += 40
         return modelTextField
     }()
     
     private lazy var colorLabel: UILabel = {
        var colorLabel = UILabel()
-        colorLabel.frame = CGRect(x: 30, y: 190, width: 100, height: 30)
+        colorLabel.frame = CGRect(x: 30, y: hightFromY, width: 100, height: 30)
         colorLabel.font = colorLabel.font.withSize(20)
         colorLabel.textColor = .systemGray
         colorLabel.text = "Цвет авто:"
+        hightFromY += 40
         return colorLabel
     }()
     
     private lazy var colorTextField: UITextField = {
        var colorTextField = UITextField()
-        colorTextField.frame = CGRect(x: 30, y: 230, width: 200, height: 30)
+        colorTextField.frame = CGRect(x: 30, y: hightFromY, width: 200, height: 30)
         colorTextField.borderStyle = UITextField.BorderStyle.roundedRect
         colorTextField.tintColor = UIColor.systemGray
         colorTextField.addTarget(self, action: #selector(colorFunc(sender:)), for: .touchDown)
+        hightFromY += 40
         return colorTextField
     }()
     
     private lazy var yearLabel: UILabel = {
        var yearLabel = UILabel()
-        yearLabel.frame = CGRect(x: 30, y: 270, width: 200, height: 30)
+        yearLabel.frame = CGRect(x: 30, y: hightFromY, width: 200, height: 30)
         yearLabel.font = yearLabel.font.withSize(20)
         yearLabel.textColor = .systemGray
         yearLabel.text = "Год выпуска авто:"
+        hightFromY += 40
         return yearLabel
     }()
     
     private lazy var yearTextField: UITextField = {
        var yearTextField = UITextField()
-        yearTextField.frame = CGRect(x: 30, y: 310, width: 200, height: 30)
+        yearTextField.frame = CGRect(x: 30, y: hightFromY, width: 200, height: 30)
         yearTextField.borderStyle = UITextField.BorderStyle.roundedRect
         yearTextField.tintColor = UIColor.systemGray
         yearTextField.addTarget(self, action: #selector(yearAction(sender:)), for: .touchDown)
-        
+        hightFromY += 40
         return yearTextField
     }()
     
     private lazy var gbddLabel: UILabel = {
        var gbddLabel = UILabel()
-        gbddLabel.frame = CGRect(x: 30, y: 350, width: 240, height: 30)
+        gbddLabel.frame = CGRect(x: 30, y: hightFromY, width: 240, height: 30)
         gbddLabel.font = yearLabel.font.withSize(20)
         gbddLabel.textColor = .systemGray
         gbddLabel.text = "Стоит на учете в гибдд?"
+        hightFromY += 40
         return gbddLabel
     }()
     
     private lazy var gbddSwith: UISwitch = {
       var gbddSwith = UISwitch()
-        gbddSwith.frame = CGRect(x: 275, y: 350, width: 60, height: 30)
+        gbddSwith.frame = CGRect(x: 275, y: hightFromY, width: 60, height: 30)
         gbddSwith.addTarget(self, action: #selector(switchIsOn(target:)), for: .valueChanged)
        return gbddSwith
    }()
     
     private lazy var discriptionLabel: UILabel = {
        var discriptionLabel = UILabel()
-        discriptionLabel.frame = CGRect(x: 30, y: 400, width: 150, height: 30)
+        discriptionLabel.frame = CGRect(x: 30, y: hightFromY, width: 150, height: 30)
         discriptionLabel.font = discriptionLabel.font.withSize(20)
         discriptionLabel.textColor = .systemGray
         discriptionLabel.text = "Описание:"
+        hightFromY += 40
       
         return discriptionLabel
     }()
@@ -117,9 +127,10 @@ final class ViewControllerAddCar: UIViewController, UIPickerViewDelegate  {
     
     private lazy var discriptionTextField: UITextField = {
        var discriptionTextField = UITextField()
-        discriptionTextField.frame = CGRect(x: 10, y: 430, width: 280, height: 200)
+        discriptionTextField.frame = CGRect(x: 10, y: hightFromY, width: 280, height: 200)
         discriptionTextField.font = UIFont(name: "HelveticaNeue", size: 12)
         discriptionTextField.tintColor = UIColor.systemGray
+        hightFromY += 30
         discriptionTextField.text =
        """
        """
@@ -129,7 +140,7 @@ final class ViewControllerAddCar: UIViewController, UIPickerViewDelegate  {
     
     private lazy var addCarButton: UIButton = {
         var addCarButton = UIButton()
-        addCarButton.frame = CGRect(x: 0, y: 650, width: 250, height: 70)
+        addCarButton.frame = CGRect(x: 0, y: 750, width: 250, height: 70)
         addCarButton.center.x = view.center.x
         addCarButton.setTitle("Добавить ", for: .normal)
         addCarButton.tintColor = UIColor.white
@@ -165,11 +176,11 @@ final class ViewControllerAddCar: UIViewController, UIPickerViewDelegate  {
    
     @objc func addButton(_ sender: UIButton) {
         
-        let contact = UIStoryboard(name: "Main", bundle: nil)
-        guard let nextView = contact.instantiateViewController(identifier: "viewTwo") as? ViewControllerDescriptionCar else { return }
+        let secondVC = ViewControllerListCar()
+        self.navigationController?.pushViewController(secondVC, animated: true)
         
         Car.cars.append(Car(brend: self.brendTextField.text ?? "", model: self.modelTextField.text ?? "", year: self.yearTextField.text ?? "", color: self.colorTextField.text ?? "", photo: self.brendLabel.text ?? "", price: self.brendLabel.text ?? "", photos: [""], description: self.discriptionTextField.text ?? ""))
-            self.show(nextView, sender: nil)
+            self.show(secondVC, sender: nil)
         
     }
     

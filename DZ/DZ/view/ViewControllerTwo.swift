@@ -19,7 +19,7 @@ class ViewControllerListCar: UIViewController {
   var cars: [Car] = Car.cars
     
      private func addCar() {
-         var heightPrice = 10
+         var heightPrice = 90
 
         for (index, value) in cars.enumerated() {
             makeUI(height: heightPrice, index: index, car: value)
@@ -38,7 +38,7 @@ class ViewControllerListCar: UIViewController {
            btn.frame = CGRect(x: 30, y: height, width: 150, height: 120)
            btn.backgroundColor = UIColor.blue
            btn.layer.cornerRadius = 9
-          btn.addTarget(self, action: #selector(buttonType), for: .touchUpInside)
+          btn.addTarget(self, action: #selector(descriptionButtonAction), for: .touchUpInside)
            view.addSubview(btn)
            let brendlabel = UILabel()
            brendlabel.textColor = .black
@@ -91,43 +91,18 @@ private func configureSubviews() {
     
     @objc func addCar(sender: UIButton) {
         
-        let play = UIStoryboard(name: "Main", bundle: nil)
-        guard let nextScreen = play.instantiateViewController(identifier: "viewFour") as? ViewControllerAddCar else { return }
-        self.present(nextScreen, animated: true, completion: nil)
-        nextScreen.modalPresentationStyle = .automatic
+        let secondVC = ViewControllerAddCar()
+        self.navigationController?.pushViewController(secondVC, animated: true)
  
     }
     
     
-    @objc func buttonType(_ sender: UIButton) {
+    @objc func descriptionButtonAction(_ sender: UIButton) {
         
-        let play = UIStoryboard(name: "Main", bundle: nil)
-        guard let nextScreen = play.instantiateViewController(identifier: "viewThree") as? ViewControllerDescriptionCar else { return }
-        self.present(nextScreen, animated: true, completion: nil)
-        nextScreen.modalPresentationStyle = .automatic
-        nextScreen.car = cars[sender.tag]
+        let secondVC = ViewControllerDescriptionCar()
+        self.navigationController?.pushViewController(secondVC, animated: true)
+        
+        secondVC.car = cars[sender.tag]
     }
 }
     
-//    var cars: [Car] = [Car(brend: "Toyota", model: "Rav4", year: "2014", color: "Blue", photo: "ravBlue.jpg", price: "2100000p", photos: ["rav1.jpg", "rav2.jpg", "rav3.jpg", "rav4.jpg","rav5.jpg","rav6.jpg"],
-//        description:
-//        """
-//         Продаю новый автомобиль,пробег 86 км, съездили два раза до МРЭО на нем,остальное время стоял в гараже. Стоят легкосплавные диски с летней резиной,есть штамповка штатная без зимней резины,установлен регистратор,коврики в салоне и багажнике. Все вопросы по телефону,торг у капота
-//        """),
-//                     Car(brend: "Toyota", model: "Rav4", year: "2009", color: "Gold",photo: "ravGold.jpg", price: "1100000p", photos: [""], description: "2"),
-//                     Car(brend: "Toyota", model: "Alphard", year: "2004", color: "White",photo: "Alphard.jpeg", price: "1300000p", photos: [""], description: "3")]
-//}
-//
-//struct Car {
-//var brend: String
-//var model: String
-//var year: String
-//var color: String
-//var photo: String
-//var price: String
-//var photos: [String]
-//var description: String
-//
-//}
-//
-//    
